@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Représentants des Parents d'Élèves 2025-2026 - Les Amandiers</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header / Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path fill="%23ffffff" fill-opacity="0.1" d="M0,0 L1200,0 L1200,60 Q900,100 600,60 Q300,20 0,60 Z"/></svg>') no-repeat bottom;
+            background-size: cover;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            opacity: 0.95;
+        }
+
+        .school-name {
+            font-size: 2.5em;
+            font-style: italic;
+            margin-top: 20px;
+            font-weight: 300;
+        }
+
+        .school-code {
+            font-size: 1.2em;
+            margin-top: 10px;
+            opacity: 0.9;
+            letter-spacing: 3px;
+        }
+
+        /* Section Générale */
+        section {
+            padding: 60px 20px;
+            background: white;
+            margin: 40px 0;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        section h2 {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: #667eea;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+
+        /* Section Description */
+        .description-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        .description-text {
+            font-size: 1.1em;
+            line-height: 1.8;
+        }
+
+        .description-text p {
+            margin-bottom: 20px;
+        }
+
+        .description-images {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .school-image {
+            border-radius: 15px;
+            height: 180px;
+            object-fit: cover;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .school-image:hover {
+            transform: scale(1.05);
+        }
+
+        /* Section Actualités */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .news-card {
+            background: linear-gradient(135deg, #f8f9ff 0%, #fff 100%);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid #667eea;
+        }
+
+        .news-card.important {
+            border-left: 5px solid #f59e0b;
+            background: linear-gradient(135deg, #fffbeb 0%, #fff 100%);
+        }
+
+        .news-card.info {
+            border-left: 5px solid #3b82f6;
+            background: linear-gradient(135deg, #eff6ff 0%, #fff 100%);
+        }
+
+        .news-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+
+        .news-date {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 20px;
+            font-weight: 600;
+            font-size: 0.95em;
+            letter-spacing: 1px;
+        }
+
+        .news-card.important .news-date {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+        }
+
+        .news-card.info .news-date {
+            background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+        }
+
+        .news-content {
+            padding: 25px;
+        }
+
+        .news-title {
+            font-size: 1.4em;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .news-description {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .news-list {
+            list-style: none;
+            padding-left: 0;
+            margin: 15px 0;
+        }
+
+        .news-list li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .news-list li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .news-tag {
+            display: inline-block;
+            background: #e0e7ff;
+            color: #667eea;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        .news-card.important .news-tag {
+            background: #fef3c7;
+            color: #d97706;
+        }
+
+        .news-card.info .news-tag {
+            background: #dbeafe;
+            color: #2563eb;
+        }
+
+        /* Bouton téléchargement PDF */
+        .pdf-download-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1em;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 10px rgba(102, 126, 234, 0.3);
+        }
+
+        .pdf-download-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(102, 126, 234, 0.5);
+        }
+
+        /* Highlight dans actualités */
+        .news-highlight {
+            background: #fef3c7;
+            border-left: 3px solid #f59e0b;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            font-size: 0.95em;
+        }
+
+        /* Section Missions - Layout en 3 colonnes */
+        .missions-container {
+            margin-top: 40px;
+        }
+
+        .missions-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .mission-card {
+            background: #f8f9ff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .mission-card.missions {
+            border-left: 5px solid #667eea;
+        }
+
+        .mission-card.engagements {
+            border-left: 5px solid #a78bfa;
+        }
+
+        .mission-card.devoirs {
+            border-left: 5px solid #ec4899;
+        }
+
+        .mission-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .mission-card h3 {
+            font-size: 1.8em;
+            color: #667eea;
+            margin-bottom: 20px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .mission-card.engagements h3 {
+            color: #a78bfa;
+        }
+
+        .mission-card.devoirs h3 {
+            color: #ec4899;
+        }
+
+        .mission-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .mission-card li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            line-height: 1.6;
+        }
+
+        .mission-card li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .mission-card.engagements li::before {
+            color: #a78bfa;
+        }
+
+        .mission-card.devoirs li::before {
+            color: #ec4899;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 5px solid #f59e0b;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 10px;
+            font-size: 1.2em;
+            line-height: 1.8;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.2);
+        }
+
+        .highlight-box strong {
+            color: #d97706;
+            font-size: 1.1em;
+        }
+
+        /* Section Équipe */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .team-member {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 2px solid #e0e7ff;
+        }
+
+        .team-member:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+            border-color: #667eea;
+        }
+
+        .member-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            object-fit: cover;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+            border: 4px solid #667eea;
+        }
+
+        .member-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5em;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .member-name {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 8px;
+        }
+
+        .member-role {
+            color: #666;
+            font-size: 1em;
+            line-height: 1.4;
+        }
+
+        /* Section Contact */
+        .contact-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .contact-section h2 {
+            color: white;
+        }
+
+        .contact-section h2::after {
+            background: white;
+        }
+
+        .contact-content {
+            margin-top: 40px;
+        }
+
+        .contact-content p {
+            font-size: 1.2em;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            opacity: 0.95;
+        }
+
+        .contact-email {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.3em;
+            font-weight: 600;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
+
+        .contact-email:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        .smiley {
+            font-size: 3em;
+            margin-top: 30px;
+        }
+
+        /* Footer */
+        footer {
+            background: #2d3748;
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .missions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2em;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2em;
+            }
+
+            .school-name {
+                font-size: 1.8em;
+            }
+
+            .description-content {
+                grid-template-columns: 1fr;
+            }
+
+            .description-images {
+                grid-template-columns: 1fr;
+            }
+
+            .team-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            }
+
+            section h2 {
+                font-size: 2em;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="hero-content">
+            <h1>REPRÉSENTANTS DES PARENTS D'ÉLÈVES</h1>
+            <p class="subtitle">2025 - 2026</p>
+            <p class="school-name">Les Amandiers</p>
+            <p class="school-code">30121 - MUS</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Section C'est quoi -->
+        <section id="cest-quoi">
+            <h2>C'EST QUOI ?</h2>
+            <div class="description-content">
+                <div class="description-text">
+                    <p>Les représentants des parents d'élèves à l'école maternelle et élémentaire sont des élus qui participent à la vie de l'école.</p>
+                    
+                    <p>Ils sont membres à part entière du conseil d'école et créent un lien entre les parents, les enseignants, et l'administration scolaire.</p>
+                    
+                    <p>Un représentant de parents d'élèves, donne son avis et fait des suggestions sur le fonctionnement de l'école et sur toutes questions intéressant la vie de l'école : hygiène scolaire, sécurité des enfants, restauration scolaire etc.</p>
+                </div>
+                <div class="description-images">
+                    <img src="ecole_entree.png" alt="Entrée de l'école Les Amandiers" class="school-image">
+                    <img src="cour_recreation.png" alt="Cour de récréation" class="school-image">
+                    <img src="logo_mus.png" alt="Logo de Mus" class="school-image">
+                    <img src="paysage_vignes.png" alt="Paysage environnant" class="school-image">
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Actualités -->
+        <section id="actualites">
+            <h2>📰 ACTUALITÉS</h2>
+            
+            <div class="news-grid">
+                <!-- Conseil d'école du 3 novembre -->
+                <div class="news-card">
+                    <div class="news-date">📅 3 Novembre 2025</div>
+                    <div class="news-content">
+                        <div class="news-title">Compte-rendu du 1er Conseil d'École</div>
+                        <div class="news-description">
+                            Le premier conseil d'école de l'année s'est tenu le 3 novembre 2025. Voici les points principaux abordés :
+                        </div>
+                        <ul class="news-list">
+                            <li><strong>149 élèves</strong> répartis en 7 classes (PS à CM2)</li>
+                            <li>Élections : 233 inscrits, 122 votants (taux de participation 52,36%)</li>
+                            <li>Projets de l'année : vendanges, tennis, échecs, semaine du goût</li>
+                            <li>Travaux réalisés : nouveau tableau numérique, déménagement classe</li>
+                        </ul>
+                        <div class="news-highlight">
+                            ⚠️ <strong>Urgence signalée :</strong> La cour de maternelle nécessite une intervention rapide pour sécuriser les dangers identifiés (gros cailloux, fils de grillage, trous).
+                        </div>
+                        <div style="margin-top: 20px; text-align: center;">
+                            <a href="CR_CONSEIL_D_ECOLE_1.pdf" target="_blank" class="pdf-download-btn">
+                                📄 Télécharger le compte-rendu complet (PDF)
+                            </a>
+                        </div>
+                        <span class="news-tag">Conseil d'école</span>
+                    </div>
+                </div>
+
+                <!-- Importance du vote -->
+                <div class="news-card important">
+                    <div class="news-date">💡 Information importante</div>
+                    <div class="news-content">
+                        <div class="news-title">Pourquoi voter est essentiel ?</div>
+                        <div class="news-description">
+                            Beaucoup de parents pensent que voter est inutile car il n'y a qu'une seule liste ou que le bulletin est annulé s'il est modifié. 
+                        </div>
+                        <div class="news-highlight">
+                            <strong>Pourtant, un fort taux de participation reste essentiel !</strong>
+                        </div>
+                        <ul class="news-list">
+                            <li>Le vote est le <strong>seul indicateur reconnu</strong> d'implication parentale au niveau institutionnel</li>
+                            <li>Il valorise la vie scolaire et renforce la représentativité des familles</li>
+                            <li>Plus les parents votent, plus notre voix compte auprès des autorités</li>
+                        </ul>
+                        <div class="news-description" style="margin-top: 15px;">
+                            <strong>Lors des prochaines élections, pensez à voter !</strong> C'est un geste simple qui fait toute la différence pour nos enfants.
+                        </div>
+                        <span class="news-tag">Démocratie scolaire</span>
+                    </div>
+                </div>
+
+                <!-- Ressources disponibles -->
+                <div class="news-card info">
+                    <div class="news-date">ℹ️ Bon à savoir</div>
+                    <div class="news-content">
+                        <div class="news-title">Ressources à votre disposition</div>
+                        <div class="news-description">
+                            N'oubliez pas que vous avez accès à plusieurs ressources pour accompagner votre enfant :
+                        </div>
+                        <ul class="news-list">
+                            <li><strong>Psychologue scolaire :</strong> Une psychologue est présente dans notre circonscription. N'hésitez pas à demander un rendez-vous si besoin</li>
+                            <li><strong>Équipe enseignante :</strong> Disponible pour échanger sur le suivi de votre enfant</li>
+                            <li><strong>Représentants des parents :</strong> Nous sommes là pour vous écouter et vous accompagner</li>
+                        </ul>
+                        <div class="news-description" style="margin-top: 15px; font-style: italic;">
+                            Ces démarches sont <strong>confidentielles</strong> et peuvent vraiment faire la différence pour le bien-être de votre enfant.
+                        </div>
+                        <span class="news-tag">Ressources</span>
+                    </div>
+                </div>
+
+                <!-- Prochaines dates -->
+                <div class="news-card">
+                    <div class="news-date">📅 À venir</div>
+                    <div class="news-content">
+                        <div class="news-title">Prochains événements</div>
+                        <div class="news-description">
+                            Restez informés des prochains conseils d'école et événements importants :
+                        </div>
+                        <ul class="news-list">
+                            <li>Prochain conseil d'école (date à confirmer)</li>
+                            <li>Opération boîtes de Noël pour les personnes démunies</li>
+                            <li>Visite de l'inspectrice jusqu'à fin 2025</li>
+                        </ul>
+                        <div class="news-description" style="margin-top: 15px;">
+                            Les dates vous seront communiquées <strong>environ 15 jours avant</strong> chaque événement via les canaux habituels de communication.
+                        </div>
+                        <span class="news-tag">Agenda</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Missions -->
+        <section id="missions">
+            <h2>MISSIONS, ENGAGEMENTS & DEVOIRS</h2>
+            
+            <div class="missions-container">
+                <div class="missions-grid">
+                    <div class="mission-card missions">
+                        <h3>📋 Missions</h3>
+                        <ul>
+                            <li>Être à l'écoute de tous les parents</li>
+                            <li>Être le porte-parole des parents lors des conseils d'écoles ou dans toute autre réunion au sein des écoles, auprès des différents partenaires (municipalité, Éducation Nationale, associations locales...)</li>
+                            <li>Accompagner les familles en médiation si nécessaire et à leur demande</li>
+                            <li>Assurer un contact permanent avec le directeur de l'école et avec les enseignants</li>
+                            <li>Être le lien entre les familles et l'école</li>
+                            <li>Traiter les problématiques collectives</li>
+                        </ul>
+                    </div>
+
+                    <div class="mission-card engagements">
+                        <h3>🤝 Engagements</h3>
+                        <ul>
+                            <li>Vous communiquer les dates des conseils d'école environ 15 jours avant la date de l'événement</li>
+                            <li>Vous informer de la mise à disposition des comptes rendus des conseils d'école, rédigés collégialement par les enseignants, dans les meilleurs délais possibles via différents canaux de communication</li>
+                        </ul>
+                    </div>
+
+                    <div class="mission-card devoirs">
+                        <h3>⚖️ Devoirs</h3>
+                        <ul>
+                            <li>Obligation de confidentialité à l'égard des informations personnelles dont il peut avoir connaissance</li>
+                            <li>Respect et non jugement : nous sommes tous différents et devons accepter ces différences pour une bonne cohésion sociale</li>
+                            <li>Collaborer en bon citoyen avec tous les partenaires : enseignants, Éducation Nationale, Mairie...</li>
+                            <li>Avoir une attitude positive sans craindre de dénoncer les problèmes si nécessaire</li>
+                            <li>Distinguer les cas personnels des problèmes généraux</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="highlight-box">
+                    <strong>Et cela, TOUJOURS pour défendre l'intérêt des enfants !</strong>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Équipe -->
+        <section id="equipe">
+            <h2>QUI SOMMES-NOUS ?</h2>
+            
+            <div class="team-grid">
+                <div class="team-member">
+                    <img src="Vanessa.jpg" alt="Vanessa LE SCOLAN NGUYEN" class="member-photo">
+                    <div class="member-name">Vanessa LE SCOLAN NGUYEN</div>
+                    <div class="member-role">Parent d'élèves en<br>CE2 & MS</div>
+                </div>
+
+                <div class="team-member">
+                    <img src="Kathleen.jpg" alt="Kathleen POLLAK" class="member-photo">
+                    <div class="member-name">Kathleen POLLAK</div>
+                    <div class="member-role">Parent d'élève en<br>CE2</div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-avatar">SR</div>
+                    <div class="member-name">Sophie ROUSSEL</div>
+                    <div class="member-role">Parent d'élèves en<br>CM2 & CE1</div>
+                </div>
+
+                <div class="team-member">
+                    <img src="Mathieu_Le.jpg" alt="Mathieu LEFEVRE" class="member-photo">
+                    <div class="member-name">Mathieu LEFEVRE</div>
+                    <div class="member-role">Parent d'élève en<br>CE1</div>
+                </div>
+
+                <div class="team-member">
+                    <img src="Laurie.jpg" alt="Laurie CICATELLO" class="member-photo">
+                    <div class="member-name">Laurie CICATELLO</div>
+                    <div class="member-role">Parent d'élèves en<br>CE1 & MS</div>
+                </div>
+
+                <div class="team-member">
+                    <img src="Mathieu_Au.png" alt="Mathieu AURRAN" class="member-photo">
+                    <div class="member-name">Mathieu AURRAN</div>
+                    <div class="member-role">Parent d'élèves en<br>CE2 & PS</div>
+                </div>
+
+                <div class="team-member">
+                    <img src="Estelle.jpg" alt="Estelle VINCENT" class="member-photo">
+                    <div class="member-name">Estelle VINCENT</div>
+                    <div class="member-role">Parent d'élève en<br>CE2</div>
+                </div>
+
+                <div class="team-member">
+                    <div class="member-avatar">KD</div>
+                    <div class="member-name">Katia DUCROUX</div>
+                    <div class="member-role">Parent d'élèves en<br>CE1 & PS</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Contact -->
+        <section class="contact-section">
+            <h2>COMMENT NOUS CONTACTER ?</h2>
+            
+            <div class="contact-content">
+                <p>À la sortie des classes ou au périscolaire, n'hésitez pas à venir nous aborder,<br>nous serons ravis d'échanger avec vous !</p>
+                
+                <p>Afin de faciliter la prise de contact, nous avons créé une adresse mail à laquelle vous pouvez nous adresser vos interrogations, demandes de médiation, problèmes collectifs à faire remonter en conseil d'école mais également des avancées que vous avez notées et appréciées ou des remerciements aux parties prenantes du conseil d'école.</p>
+                
+                <a href="mailto:parents.delegues.mus@gmail.com" class="contact-email">parents.delegues.mus@gmail.com</a>
+                
+                <div class="smiley">😊</div>
+                <p style="margin-top: 20px; font-size: 1.4em;"><strong>À bientôt !</strong></p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025-2026 - Représentants des Parents d'Élèves - École Les Amandiers - Mus</p>
+        <p style="margin-top: 10px; font-size: 0.9em;">Document créé avec soin pour faciliter la communication école-familles</p>
+    </footer>
+</body>
+</html>
